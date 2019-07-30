@@ -3,14 +3,13 @@
 
 #include "main.h"
 
-#define BIT8_MODE
+//#define BIT8_MODE
 
-#define DATA_LAT    LATD
+#define DATA_LAT    LATD                    /* Data */
 #define DATA_PORT   PORTD
 #define DATA_TRIS   TRISD
 
-#define RW_PIN      LATCbits.LATC5   		/* PORT for RW */
-#define TRIS_RW     TRISCbits.TRISC5    	/* TRIS for RW */
+/* RW pin must be grounded */
 #define RS_PIN      LATCbits.LATC4   		/* PORT for RS */
 #define TRIS_RS     TRISCbits.TRISC4    	/* TRIS for RS */
 #define E_PIN       LATCbits.LATC6  		/* PORT for D  */

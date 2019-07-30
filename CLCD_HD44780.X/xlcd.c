@@ -10,8 +10,7 @@ static void CLCD_SendCmd(uint8_t cmd) {
 
     DATA_TRIS = 0x00; //tris output
     RS_PIN = 0; //command    
-    RW_PIN = 0; //write    
-
+    
 #ifdef BIT8_MODE
     DATA_LAT = cmd; //send command
     CLCD_ToggleEnable(); //toggle enable        
@@ -30,8 +29,7 @@ static void CLCD_SendData(uint8_t data) {
 
     DATA_TRIS = 0x00; //tris output
     RS_PIN = 1; //data    
-    RW_PIN = 0; //write
-    
+        
 #ifdef BIT8_MODE
     DATA_LAT = data; //send data
     CLCD_ToggleEnable(); //toggle enable        
@@ -48,13 +46,11 @@ static void CLCD_SendData(uint8_t data) {
 
 void CLCD_Initialize(void) {
 #ifdef BIT8_MODE
-    DATA_LAT = 0x0; //init low
-    RW_PIN = 0; //init low    
+    DATA_LAT = 0x0; //init low    
     RS_PIN = 0; //init low    
     E_PIN = 0; //init low
 
-    DATA_TRIS = 0x00; //tris output
-    TRIS_RW = 0; //rw output
+    DATA_TRIS = 0x00; //tris output    
     TRIS_RS = 0; //rs output    
     TRIS_E = 0; //enable output
 
@@ -69,13 +65,11 @@ void CLCD_Initialize(void) {
 
     CLCD_SendCmd(LCD_CMD_FUNCTIONSET | LCD_FLAG_8BITMODE | LCD_FLAG_2LINE); //0x38    
 #else
-    DATA_LAT &= 0x0F; //init low
-    RW_PIN = 0; //init low    
+    DATA_LAT &= 0x0F; //init low    
     RS_PIN = 0; //init low    
     E_PIN = 0; //init low
 
-    DATA_TRIS &= 0x0F; //tris output
-    TRIS_RW = 0; //rw output
+    DATA_TRIS &= 0x0F; //tris output    
     TRIS_RS = 0; //rs output    
     TRIS_E = 0; //enable output
 
